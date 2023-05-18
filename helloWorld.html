@@ -1,39 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Form Submission</title>
-    <script>
-        function submitForm() {
-            var name = document.getElementById('name').value;
-
-            var payload = {
-                "text": "Field Name: " + name + "\nResponse: " + name
-            };
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://hooks.slack.com/services/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", true);
-            xhr.setRequestHeader('Content-type', 'application/json');
-            
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                    document.getElementById('confirmation').innerText = 'Enviado!';
-                } else {
-                    document.getElementById('confirmation').innerText = 'Ocurrió un error al enviar el formulario.';
-                }
-            };
-            
-            xhr.send(JSON.stringify(payload));
-        }
-    </script>
+  <title>Demo - Mijael Rodriguez</title>
 </head>
 <body>
-    <form>
-        <label for="name">Nombre y apellido 01:</label>
-        <input type="text" id="name" name="name" required>
-        <br><br>
-        <input type="button" value="Enviar" onclick="submitForm()">
-    </form>
-
-    <div id="confirmation"></div>
+  <script type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
+  <zapier-interfaces-page-embed page-id='clhtfzqnf002wmi0o83mkl4xp' no-background='false' style='max-width: 900px; height: 500px;'></zapier-interfaces-page-embed>
 </body>
 </html>
