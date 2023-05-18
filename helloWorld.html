@@ -13,6 +13,15 @@
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "https://hooks.slack.com/services/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", true);
             xhr.setRequestHeader('Content-type', 'application/json');
+            
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    document.getElementById('confirmation').innerText = 'Enviado!';
+                } else {
+                    document.getElementById('confirmation').innerText = 'Ocurrió un error al enviar el formulario.';
+                }
+            };
+            
             xhr.send(JSON.stringify(payload));
         }
     </script>
@@ -24,5 +33,7 @@
         <br><br>
         <input type="button" value="Enviar" onclick="submitForm()">
     </form>
+
+    <div id="confirmation"></div>
 </body>
 </html>
