@@ -1,9 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hello World</title>
+    <title>Form Submission</title>
+    <script>
+        function submitForm() {
+            var name = document.getElementById('name').value;
+
+            var payload = {
+                "text": "Field Name: " + name + "\nResponse: " + name
+            };
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://hooks.slack.com/services/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", true);
+            xhr.setRequestHeader('Content-type', 'application/json');
+            xhr.send(JSON.stringify(payload));
+        }
+    </script>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+        <input type="button" value="Enviar" onclick="submitForm()">
+    </form>
 </body>
 </html>
